@@ -5,22 +5,32 @@ const totalAmount = readlineSync.questionFloat("What's the total amount of the b
 // console.log('Hi ' + userName + '!');
 
 // Get the party size from the user
-const totalPartySize = readlineSync.questionInt("How many people are you in the party? ")
+const totalPartySize = readlineSync.questionInt("How many people are in the party? ")
 
 // Get the % of the tip from the user
-const tipPercentage = readlineSync.questionsFloat("What % would you like to tip? ")
+const tipPercentage = readlineSync.questionFloat("What percentage would you like to tip? ")
 
 // Repeat all of those things back to the user.
-console.log(typeof totalAmount);
-console.log(typeof totalPartySize);
-console.log(typeof tipPercentage);
+console.log(`The total amount of the bill is: $${totalAmount.toFixed(2)}`);
+console.log(`The total party size is: ${totalPartySize}`);
+console.log(`With a tip of ${tipPercentage}% `);
 
-// The bill tip is the tipPercentage divided by 100
+// The bill tip is the (totalAmount * tipPercentage divided by 100)
+let percentage = tipPercentage / 100;
+let totalAmountToTip = totalAmount * percentage;
 
 // Total bill is the bill plus the tip
+let billWithTip = totalAmount + totalAmountToTip;
 
 
 //Get total amount of the bill divided by the # of people
-
+let totalPerPerson = billWithTip / totalPartySize;
 
 //Calculate how much everyone is paying
+console.log(`The tip should be $${totalAmountToTip.toFixed(2)}`);
+console.log(`The total check should be $${billWithTip.toFixed(2)}`);
+console.log(`Each person should pay $${totalPerPerson.toFixed(2)}`);
+
+
+
+
